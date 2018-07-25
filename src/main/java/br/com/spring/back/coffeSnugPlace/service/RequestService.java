@@ -3,6 +3,8 @@ package br.com.spring.back.coffeSnugPlace.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.spring.back.coffeSnugPlace.exception.PeopleNotFoundException;
@@ -48,13 +50,13 @@ public class RequestService {
 		return requestRepository.findById(id).get();
 	}
 
-	public List<Request> getAllRequest(People people) {
-		return requestRepository.findByPeople(people);
+	public Page<Request> getAllRequest(Pageable pageable) {
+		return requestRepository.findAll(pageable);
 	}
 
 	public void searchPeople(long id) throws PeopleNotFoundException {
 		if(!peopleRepository.existsById(id)) {
-			throw new PeopleNotFoundException();
+			throw new PeopleNotFoundException(id);
 		}
 	}
 }

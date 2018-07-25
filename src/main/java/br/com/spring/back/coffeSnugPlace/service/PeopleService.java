@@ -3,6 +3,8 @@ package br.com.spring.back.coffeSnugPlace.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.spring.back.coffeSnugPlace.Enum.Profession;
@@ -35,14 +37,14 @@ public class PeopleService {
 	
 	public People getById(long id) throws PeopleNotFoundException {
 		if(!peopleRepository.existsById(id)) {
-			throw new PeopleNotFoundException();
+			throw new PeopleNotFoundException(id);
 		}
 		return peopleRepository.findById(id).get();
 	}
 	
 	
-	public List<People> getAll(){
-		return peopleRepository.findAll();
+	public Page<People> getAll(Pageable pageable){
+		return peopleRepository.findAll(pageable);
 	}
 	
 	public List<People> getPeopleByProfession(Profession profession){

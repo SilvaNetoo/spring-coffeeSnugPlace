@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,10 +32,10 @@ public class PeopleController {
 	private PeopleService peopleService;
 	
 	@GetMapping("/")
-	public ResponseEntity<List<People>> getPeopleAll(){
-		return new ResponseEntity<List<People>>(peopleService.getAll(), HttpStatus.OK);
+	public ResponseEntity<Page<People>> getPeopleAll(Pageable pageable){
+		return new ResponseEntity<Page<People>>(peopleService.getAll(pageable), HttpStatus.OK);
 	}
-	
+		
 	@GetMapping("/profession/{profession}")
 	public  ResponseEntity<List<People>> getProfessionals(@PathVariable(value = "profession") Profession profession){
 		return new ResponseEntity<List<People>>(peopleService.getPeopleByProfession(profession), HttpStatus.OK);
@@ -45,7 +47,7 @@ public class PeopleController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<People> createPeople(@RequestBody People people){
+	public ResponseEntity<People> createPeople(People people){
 		return new ResponseEntity<People>(peopleService.save(people), HttpStatus.CREATED);
 	}
 	 
