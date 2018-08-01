@@ -1,7 +1,5 @@
 package br.com.spring.back.coffeSnugPlace.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.spring.back.coffeSnugPlace.exception.PeopleNotFoundException;
 import br.com.spring.back.coffeSnugPlace.exception.RequestNotFoundException;
-import br.com.spring.back.coffeSnugPlace.model.People;
 import br.com.spring.back.coffeSnugPlace.model.Request;
 import br.com.spring.back.coffeSnugPlace.repository.PeopleRepository;
 import br.com.spring.back.coffeSnugPlace.repository.RequestRepository;

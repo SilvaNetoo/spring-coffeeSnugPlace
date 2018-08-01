@@ -1,6 +1,6 @@
 package br.com.spring.back.coffeSnugPlace.exception;
 
-public class PeopleNotFoundDetails extends ErrorDetails {
+public class UserUnauthorizedDetails extends ErrorDetails {
 	
 	public static final class Builder {
         private String title;
@@ -41,15 +41,16 @@ public class PeopleNotFoundDetails extends ErrorDetails {
             return this;
         }
 
-        public PeopleNotFoundDetails build() {
-        	PeopleNotFoundDetails resourceNotFoundDetails = new PeopleNotFoundDetails();
-            resourceNotFoundDetails.setDeveloperMessage(developerMessage);
-            resourceNotFoundDetails.setTitle(title);
-            resourceNotFoundDetails.setDetail(detail);
-            resourceNotFoundDetails.setTimestamp(timestamp);
-            resourceNotFoundDetails.setStatus(status);
-            return resourceNotFoundDetails;
+        public UserUnauthorizedDetails build() {
+        	UserUnauthorizedDetails peopleUnauthorizedDetails = new UserUnauthorizedDetails();
+            peopleUnauthorizedDetails.setDeveloperMessage(developerMessage);
+            peopleUnauthorizedDetails.setTitle(title);
+            peopleUnauthorizedDetails.setDetail(detail);
+            peopleUnauthorizedDetails.setTimestamp(timestamp);
+            peopleUnauthorizedDetails.setStatus(status);
+            return peopleUnauthorizedDetails;
         }
     }
+	
 	
 }

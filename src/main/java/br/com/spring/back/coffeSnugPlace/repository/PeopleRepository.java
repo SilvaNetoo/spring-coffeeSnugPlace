@@ -11,4 +11,6 @@ public interface PeopleRepository extends PagingAndSortingRepository<People, Lon
 
 	List<People> findByProfession(Profession profession);
 	
+	People findByName(String name);
+	
 }

@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.com.spring.back.coffeSnugPlace.Enum.Profession;
 
 @Entity
@@ -15,25 +17,25 @@ public class People {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@NotNull
 	@Size(max = 100)
 	private String name;
-	
+
 	@NotNull
-	private String login;
-	
+	private String username;
+
 	@NotNull
+	@JsonIgnore
 	private String password;
-	
+
 	@NotNull
 	private Profession profession;
 
-	public People(@NotNull @Size(max = 100) String name, @NotNull String login, @NotNull String password,
-			@NotNull Profession profession) {
+	public People(String name, String login, String password, Profession profession) {
 		super();
 		this.name = name;
-		this.login = login;
+		this.username = login;
 		this.password = password;
 		this.profession = profession;
 	}
@@ -57,12 +59,12 @@ public class People {
 		this.name = name;
 	}
 
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -76,11 +78,9 @@ public class People {
 	public Profession getProfession() {
 		return profession;
 	}
-	
+
 	public void setProfession(Profession profession) {
 		this.profession = profession;
 	}
-	
-	
-	
+
 }

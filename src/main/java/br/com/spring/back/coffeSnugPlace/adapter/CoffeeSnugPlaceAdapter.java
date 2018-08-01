@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SuppressWarnings("deprecation")
 @Configuration
-public class CoffeeSnugPlaceAdapter extends WebMvcConfigurerAdapter {
+public class CoffeeSnugPlaceAdapter extends WebMvcConfigurerAdapter{
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
@@ -18,5 +18,4 @@ public class CoffeeSnugPlaceAdapter extends WebMvcConfigurerAdapter {
 		phmar.setFallbackPageable(new PageRequest(0, 5));
 		argumentResolvers.add(phmar);
 	}
-
 }

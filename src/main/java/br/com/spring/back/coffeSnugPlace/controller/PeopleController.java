@@ -60,7 +60,7 @@ public class PeopleController {
 	@PutMapping("/{id}")
 	public ResponseEntity<People> updatePeople(@Valid @PathVariable long id, @RequestBody People people) throws PeopleNullException, PeopleNotFoundException{
 		People peopleUpdate = peopleService.getById(id);
-		peopleUpdate.setLogin(people.getLogin());
+		peopleUpdate.setUsername(people.getUsername());
 		peopleUpdate.setName(people.getName());
 		peopleUpdate.setPassword(people.getPassword());
 		peopleUpdate.setProfession(people.getProfession());
